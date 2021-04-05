@@ -8,11 +8,20 @@
     <title>Short your url</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        header-nav {
+            font-size: 1.8em;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <h1>Short your URL</h1>
+    <header>
+        <nav class="navbar navbar-light bg-light header-nav">
+            <a href="/" class="navbar-brand">Short Your URL</a>
+        </nav>
+    </header>
+    <div class="container">
         <form action="/shorturls" method="POST" class="my-4 form-inline">
             <label for="fullUrl" class="sr-only">Url</label>
             <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
@@ -23,21 +32,33 @@
                 <tr>
                     <th>Full Url</th>
                     <th>Short Url</th>
-                    <th>clicks</th>
-                    <th>Utilities</th>
+                    <th>Clicks</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <% shortUrls.forEach(shortUrl => { %>
+                <% shortUrls.forEach(shortUrl=> { %>
                     <tr>
-                        <td><a target="_blank" href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
-                        <td><a target="_blank" href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
-                        <td><%= shortUrl.clicks %></td>
+                        <td><a target="_blank" href="<%= shortUrl.full %>">
+                                <%= shortUrl.full %>
+                            </a></td>
+                        <td><a target="_blank" href="<%= shortUrl.short %>" id="shorturl">
+                                <%= shortUrl.short %>
+                            </a></td>
+                        <td>
+                            <%= shortUrl.clicks %>
+                        </td>
+                        <td></td>
                     </tr>
-                <% }) %>
+                    <% }) %>
             </tbody>
         </table>
     </div>
+    <footer class="page-footer font-small blue fixed-bottom">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &#169; <%=new Date().getFullYear()%> Copyright
+        </div>
+    </footer>
 </body>
 
 </html>
