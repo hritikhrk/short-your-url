@@ -12,6 +12,14 @@
         header-nav {
             font-size: 1.8em;
         }
+
+        .my-card-container>.my-card {
+            background-color: rgb(169, 240, 173);
+        }
+
+        .my-card-container>.my-card~.my-card {
+            background-color: aliceblue;
+        }
     </style>
 </head>
 
@@ -27,32 +35,24 @@
             <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
             <button class="btn btn-success" type="submit">Short</button>
         </form>
-        <table class="table table-striped table-responsive">
-            <thead>
-                <tr>
-                    <th>Full Url</th>
-                    <th>Short Url</th>
-                    <th>Clicks</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% shortUrls.forEach(shortUrl=> { %>
-                    <tr>
-                        <td><a target="_blank" href="<%= shortUrl.full %>">
-                                <%= shortUrl.full %>
-                            </a></td>
-                        <td><a target="_blank" href="<%= shortUrl.short %>" id="shorturl">
+        <div class="row my-card-container">
+            <% shortUrls.forEach(shortUrl=> { %>
+                <div class="card border-dark mb-3 my-card"
+                    style="max-width: 18rem; max-height: 300px; overflow-wrap: normal; margin-left: auto; margin-right: auto;">
+                    <div class="card-header">Shortened Url</div>
+                    <div class="card-body text-dark">
+                        <h4 class="card-title"><a target="_blank" href="<%= shortUrl.short %>" id="shorturl">
                                 <%= shortUrl.short %>
-                            </a></td>
-                        <td>
-                            <%= shortUrl.clicks %>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
+                            </a></h4>
+                        <p class="card-text" style="overflow: scroll;"><a target="_blank" href="<%= shortUrl.full %>">
+                                <%= shortUrl.full %>
+                            </a></p>
+                        <p class="card-text">Clicks: <%= shortUrl.clicks %>
+                                </>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
     </div>
     <footer class="page-footer font-small blue fixed-bottom">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
@@ -62,3 +62,6 @@
 </body>
 
 </html>
+
+https://hritikhrk.netlify.app/
+https://hritikhrk.github.io/wdc/mod5_sol/assignment5-solution-starter/
