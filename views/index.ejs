@@ -13,6 +13,10 @@
             font-size: 1.8em;
         }
 
+        .container {
+            margin-bottom: 80px;
+        }
+
         .my-card-container>.my-card {
             background-color: rgb(169, 240, 173);
         }
@@ -39,16 +43,17 @@
             <% shortUrls.forEach(shortUrl=> { %>
                 <div class="card border-dark mb-3 my-card"
                     style="max-width: 18rem; max-height: 300px; overflow-wrap: normal; margin-left: auto; margin-right: auto;">
+
                     <div class="card-header">Shortened Url</div>
                     <div class="card-body text-dark">
-                        <h4 class="card-title"><a target="_blank" href="<%= shortUrl.short %>" id="shorturl">
+                        <h4 class="card-title"><a class="shorturllink" target="_blank" href="<%= shortUrl.short %>">
                                 <%= shortUrl.short %>
                             </a></h4>
                         <p class="card-text" style="overflow: scroll;"><a target="_blank" href="<%= shortUrl.full %>">
                                 <%= shortUrl.full %>
                             </a></p>
                         <p class="card-text">Clicks: <%= shortUrl.clicks %>
-                                </>
+                        </p>
                     </div>
                 </div>
                 <% }) %>
