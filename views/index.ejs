@@ -24,6 +24,10 @@
         .my-card-container>.my-card~.my-card {
             background-color: aliceblue;
         }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -42,12 +46,16 @@
         <div class="row my-card-container">
             <% shortUrls.forEach(shortUrl=> { %>
                 <div class="card border-dark mb-3 my-card"
-                    style="max-width: 18rem; max-height: 300px; overflow-wrap: normal; margin-left: auto; margin-right: auto;">
+                    style="max-width: 18rem; max-height: 300px; overflow-wrap: break-word; margin-left: auto; margin-right: auto;">
                     <div class="card-header">Shortened Url</div>
                     <div class="card-body text-dark">
-                        <h4 class="card-title"><a class="shorturllink" target="_blank" href="<%= shortUrl.short %>"><h6 class="text-dark text-decoration-none" style="display: inline;">Short Url: </h6><%= shortUrl.short %>
+                        <h4 class="card-title"><a class="shorturllink" style="text-decoration: none;" target="_blank"
+                                href="<%= shortUrl.short %>">
+                                <h6 class="text-dark text-decoration-none" style="display: inline;">Short Url: </h6>
+                                <%= shortUrl.short %>
                             </a></h4>
-                        <p class="card-text" style="overflow: scroll;"><a target="_blank" href="<%= shortUrl.full %>">
+                        <p class="card-text" style="overflow-y: scroll; position: relative; height: 140px;"><a
+                                style="text-decoration: none;" target="_blank" href="<%= shortUrl.full %>">
                                 <%= shortUrl.full %>
                             </a></p>
                         <p class="card-text">Clicks: <%= shortUrl.clicks %>
