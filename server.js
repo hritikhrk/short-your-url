@@ -12,7 +12,7 @@ mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-});
+}); 
 
 const connection = mongoose.connection;
 connection.once("open", () => console.log("database connected"));
